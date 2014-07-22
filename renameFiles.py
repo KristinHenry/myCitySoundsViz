@@ -52,26 +52,6 @@ for w in soup.findAll('wpt'):
 	        	target = os.path.join(directory, newname)
 	        	os.rename(path, target)
 	        	
-	        	# os.rename(f, f[7:])
-
-        # root = "data"
-
-        # path = os.path.join("data", filename)
-        # print(path)
-
-        #os.rename(filename, newname)
-
-        # os.rename(os.path.join(root, filename), os.path.join(root, filename + "_" + lat + "_" + lon))
-	
+	        	
 	print("-------------------")
 
-
-
-# for child in root:
-# 	print("--------------------------------------")
-# 	print(child.tag, child.attrib)
-# 	for c in child:
-# 		print(c.tag, c.attrib)
-
-
-# 	print(child['link'].value)
