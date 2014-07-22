@@ -10,7 +10,7 @@ myCitySoundsViz
 4. run commandline call to ffmpeg to convert renamed .3gpp files to .wav formats
 
 
-##CommandLine--->to convert 3gpp files (from Android) to wav files:
+####CommandLine--->to convert 3gpp files (from Android) to wav files:
 
 ```
 #!/bin/bash
