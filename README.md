@@ -14,6 +14,7 @@ A visualization of sound project: focussed on The Mission neighborhood of San Fr
 
 
 ####CommandLine--->to convert 3gpp files (from Android) to wav files:
+This code converts to .wav format, but still need to remove ".3gpp" from new file's name
 
 ```
 #!/bin/bash
@@ -23,6 +24,7 @@ do
   touch "$file.wav" -r $file
 done
 ```
+
 
 
 full instructions here: 
