@@ -1,7 +1,10 @@
 myCitySoundsViz
 ===============
 
-#Data Collection Method
+A visualization of sound project: focussed on The Mission neighborhood of San Francisco. Audio recordings sampled with an Android phone, while walking between 16th and 23rd Streets on Mission and Valencia streets.
+
+
+##Data Collection Method
 
 1. use OSMtracker app  
 2. transfer files to laptop with usb cable
