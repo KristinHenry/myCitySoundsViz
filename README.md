@@ -1,6 +1,13 @@
 myCitySoundsViz
 ===============
 
+Data Collection Method
+1. use OSMtracker app  
+2. transfer files to laptop with usb cable
+3. run renameFiles.py on folder 
+	->goes through the xml file for "track", finds audio files corresponding to gps positions, appends gps info to filename of corresponding audio file
+4. run commandline call to ffmpeg to convert renamed .3gpp files to .wav formats
+
 
 CommandLine--->to convert 3gpp files (from Android) to wav files:
 
