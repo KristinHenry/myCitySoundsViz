@@ -4,12 +4,14 @@ myCitySoundsViz
 
 CommandLine--->to convert 3gpp files (from Android) to wav files:
 
+```
 #!/bin/bash
 for file in *.3gpp
 do
   ffmpeg -y -i $file -f wav "$file.wav"
   touch "$file.wav" -r $file
 done
+```
 
 
 full instructions here: 
