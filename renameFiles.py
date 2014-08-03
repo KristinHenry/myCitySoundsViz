@@ -1,57 +1,58 @@
 #
-#	first draft of script to process data as it comes from the OSMtracker app
+#	second draft of script to process data as it comes from the OSMtracker app
+#	-finds .gpx in folder with .gpp files	
 #	-reads the xml formatted .gpx file with gps data and associated audio files
 #	-renames associated audio files, adding the values for lat & lon to file name
-#	-Must rename .gpx to 'test.xml', or change this script to open with other name
+#	-renamed files moved to new folder
+#	
 #	-call from command line: 
-#			> cd into_dir_with_files 
+#			> cd into_dir_with_folders
 #			> python renameFiles.py 
 #
-#	ToDo: 	-modify so that foldername passed through command line
-#			-find the .gpx file, and open that
+#			
 #
 
 from bs4 import BeautifulSoup
 import os
 
+rootdir = 'data'
 
-data = open('test.xml', 'r').read()
-soup = BeautifulSoup(data)
+for subdir, dirs, files in os.walk(rootdir):
+    for subdir in dirs:
+    	print "-------------------"
+        print "subdir" + subdir
 
-for w in soup.findAll('wpt'):
-	print(w.find('link'))
-	if w.find('link') != None:
-		filename = w.find('link').get('href')
-		
-		lat = w.get('lat')
-		lon = w.get('lon')
-		print(filename)
-		print(lat)
-		print(lon)
-		newname = filename[:-5] + "_" + lat + "_" + lon + ".3gpp"
-		print(newname)
-		filepath_split = os.path.split(filename)
-		print(filepath_split)
-		root = filepath_split[0]
+        srcdir = os.path.join(rootdir, subdir)
+
+        targdir = os.path.join(rootdir,subdir + '_new')
+        if not os.path.isdir(targdir):
+        	os.makedirs(targdir)
 
 
-		filename_split = os.path.splitext(filename) # filename and extensionname (extension in [1])
-        print(filename_split)
-
-        filename_zero = filename_split[0]
-        print(filename_zero)
-
-        directory = "data"
-
-        for f in os.listdir(directory):
+        for file in os.listdir(srcdir):
         	
-        	if f == filename:
-	        	print "found file---------------------"
-	        	print f
-	        	path = os.path.join(directory, f)
-	        	target = os.path.join(directory, newname)
-	        	os.rename(path, target)
-	        	
-	        	
-	print("-------------------")
+        	if file[-3:] == "gpx":
+
+        		path = os.path.join(srcdir, file)
+        		data = open(path, 'r').read()
+        		soup = BeautifulSoup(data)
+
+        		for w in soup.findAll('wpt'):
+
+        			if w.find('link') != None:
+        				filename = w.find('link').get('href')
+        				lat = w.get('lat')
+        				lon = w.get('lon')
+        				newname = filename[:-5] + "_" + lat + "_" + lon + ".3gpp"
+
+        				for f in os.listdir(srcdir):
+        					if f == filename:
+        						print "found file ------------"
+        						src = os.path.join(srcdir, f)
+        						targ = os.path.join(targdir, newname)
+        						os.rename(src, targ)
+        						print f, filename
+
+
+
 
