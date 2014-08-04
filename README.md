@@ -11,6 +11,7 @@ A visualization of sound project: focussed on The Mission neighborhood of San Fr
 3. run renameFiles.py on folder 
   -goes through the xml file for "track", finds audio files corresponding to gps positions, appends gps info to filename of corresponding audio file
 4. run commandline call to ffmpeg to convert renamed .3gpp files to .wav formats
+5. if needed, run trimName.py on the  wav files converted from .3gpp files to remove ".3gpp" from the file names
 
 
 ####CommandLine--->to convert 3gpp files (from Android) to wav files:
@@ -26,15 +27,16 @@ done
 ```
 
 
-
 full instructions here: 
 https://code.google.com/p/osmtracker-android/wiki/Reading3GPPFiles
 
 ToDo: wrap this in a python script, to streamline data-conversion process
 
+
 ##Audio Visualizations
 
 ####Generating Sound Waveforms
+
 
 + .wav files must be in folder /waves with subfolders for each track
 
