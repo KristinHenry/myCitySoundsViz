@@ -40,4 +40,7 @@ ToDo: wrap this in a python script, to streamline data-conversion process
 
 + target folder is /waveforms 
 
-+ run python script form command line: ProcessFolders.py, to generate subfolders for each track, and image files of wave forms 
++ run python script form command line: ProcessFolders.py, to generate subfolders for each track, and image files of wave forms
+
+ToDo: extract general data from each audio file and save in aggregate format. functions are currently commented out of ProcossFile.py script. 
+
