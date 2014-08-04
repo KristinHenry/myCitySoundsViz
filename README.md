@@ -35,7 +35,9 @@ ToDo: wrap this in a python script, to streamline data-conversion process
 
 ##Audio Visualizations
 
-####Generating Sound Waveforms
+####Generating Waveforms from .wav Audio Files
+
+![waveform](waveform.svg "waveform")
 
 
 + .wav files must be in folder /waves with subfolders for each track
