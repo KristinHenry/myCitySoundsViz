@@ -48,3 +48,18 @@ ToDo: wrap this in a python script, to streamline data-conversion process
 
 ToDo: extract general data from each audio file and save in aggregate format. functions are currently commented out of ProcossFile.py script. 
 
+
+####Generating Spectrographs from .wav Audio Files
+
+![spectrograph](specGraph.jpg "spectrograph")
+
++ .wav files must be in folder /waves with subfolders for each track
+
++ target folder is /graphs 
+
++ run python script form command line: makeSpecGraph.py, to generate subfolders for each track, and image files of spectrographs
+
+ToDo: improve resolution for printing and maybe trim resulting image to more artistic style
+
+
+
