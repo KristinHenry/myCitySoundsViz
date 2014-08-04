@@ -32,3 +32,12 @@ https://code.google.com/p/osmtracker-android/wiki/Reading3GPPFiles
 
 ToDo: wrap this in a python script, to streamline data-conversion process
 
+##Audio Visualizations
+
+####Generating Sound Waveforms
+
++ .wav files must be in folder /waves with subfolders for each track
+
++ target folder is /waveforms 
+
++ run python script form command line: ProcessFolders.py, to generate subfolders for each track, and image files of wave forms 
