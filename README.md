@@ -51,7 +51,7 @@ ToDo: extract general data from each audio file and save in aggregate format. fu
 
 ####Generating Spectrographs from .wav Audio Files
 
-![spectrograph](specGraph.jpg "spectrograph")
+![spectrograph](specGraph.png "spectrograph")
 
 + .wav files must be in folder /waves with subfolders for each track
 
