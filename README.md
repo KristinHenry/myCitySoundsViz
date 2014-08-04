@@ -37,7 +37,7 @@ ToDo: wrap this in a python script, to streamline data-conversion process
 
 ####Generating Waveforms from .wav Audio Files
 
-![waveform](waveform.svg "waveform")
+![waveform](waveform.jpg "waveform")
 
 
 + .wav files must be in folder /waves with subfolders for each track
