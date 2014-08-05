@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leaflet Quick Start Guide Example</title>
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+</head>
+<body>
+	<div id="leafletmap" style="width: 600px; height: 600px"></div>
+
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	<script src="images.js"></script>
+	<script>
+
+		//console.log(imgs)
+
+		// // var map = L.map('map').setView([51.505, -0.09], 13);
+		//var map = L.map('map').setView([37.764, 122.420], 13);
+		var mymap = L.map('leafletmap', {
+				//center: [[40.775,-73.972]],
+				center:[[37.764, -122.420]],
+				scrollWheelZoom: false,
+				inertia: true,
+				inertiaDeceleration: 2000
+				});
+
+		//mymap.setView([40.775,-73.972], 15);
+		mymap.setView([37.764, -122.420], 15);
+
+		L.tileLayer('http://{s}.tile.stamen.com/terrain-lines/{z}/{x}/{y}.jpg', {
+			attribution: 'what should I put here?',
+			maxZoom: 18
+		}).addTo(mymap);
+
+
+
+
+		var icon1 = L.icon({
+		    iconUrl: '2014-07-22_15-39-33_37.76445335_-122.41942779.svg',
+		    iconSize:     [38, 95], // size of the icon
+		    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+		    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+		});
+
+		L.marker([37.764, -122.420], {icon: icon1}).addTo(mymap);
+
+		var icon2 = L.icon({
+		    iconUrl: '2014-07-22_15-40-10_37.76405353_-122.41953.svg',
+		    iconSize:     [38, 95], // size of the icon
+		    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+		    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+		});
+
+		L.marker([37.764, -122.419], {icon: icon2}).addTo(mymap);
+
+		var icon3 = L.icon({
+		    iconUrl: '2014-07-22_15-41-40_37.76333435_-122.41941295.svg',
+		    iconSize:     [38, 95], // size of the icon
+		    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+		    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+		});
+
+		L.marker([37.7633, -122.419], {icon: icon3}).addTo(mymap);
+
+		var icon4 = L.icon({
+		    iconUrl: '2014-07-22_15-42-07_37.76301428_-122.41942908.svg',
+		    iconSize:     [38, 95], // size of the icon
+		    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+		    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+		});
+
+		L.marker([37.7630, -122.419], {icon: icon4}).addTo(mymap);
+
+		// var icon5 = L.icon({
+		//     iconUrl: '2014-07-22_15-42-18_37.76290071_-122.41945925.svg',
+		//     iconSize:     [38, 95], // size of the icon
+		//     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+		//     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+		// });
+
+		// L.marker(37.762, -122.419], {icon: icon5}).addTo(mymap);
+
+		
+		// var icon6 = L.icon({
+		//     iconUrl: '2014-07-22_15-43-34_37.76197643_-122.41936209.svg',
+		//     iconSize:     [38, 95], // size of the icon
+		//     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+		//     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+		// });
+
+		// L.marker([37.761, -122.419], {icon: icon6}).addTo(mymap);
+
+
+		//--------------------------------------------------------------------------
+
+
+
+
+		// L.marker([37.8, 122.4]).addTo(map)
+		// 	.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+
+		// L.marker([37.8, 122.45]).addTo(map)
+		// 	.bindPopup("<b>Hello world Too!</b><br />I am a popup.").openPopup();
+
+		// L.circle([51.508, -0.11], 500, {
+		// 	color: 'red',
+		// 	fillColor: '#f03',
+		// 	fillOpacity: 0.5
+		// }).addTo(map).bindPopup("I am a circle.");
+
+		// L.polygon([
+		// 	[51.509, -0.08],
+		// 	[51.503, -0.06],
+		// 	[51.51, -0.047]
+		// ]).addTo(map).bindPopup("I am a polygon.");
+
+
+		// var popup = L.popup();
+
+		// function onMapClick(e) {
+		// 	popup
+		// 		.setLatLng(e.latlng)
+		// 		.setContent("You clicked the map at " + e.latlng.toString())
+		// 		.openOn(map);
+		// }
+
+		// map.on('click', onMapClick);
+
+
+
+
+	</script>
+</body>
+</html>

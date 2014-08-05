@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+  /*background: #339;*/
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.dot {
+  stroke: "white";
+}
+
+/*div.txt{
+  font: 14px sans-serif;
+  background: red;
+
+}*/
+
+div.span{
+  position: center;
+  text-align: center;
+}
+
+div.tooltip {   
+  position: absolute;           
+  text-align: center;          
+  width: 400px;                  
+  height: 20px;                 
+  padding: 20px;             
+  font: 14px sans-serif;        
+  /*background: #eeeeee;  
+  border: 0px;      
+  border-radius: 8px;           
+  pointer-events: none; */        
+}
+
+div.image {
+  width: 400;
+  height: 400;
+}
+
+</style>
+<body>
+<script src="d3.v3.min.js"></script>
+<script>
+
+//declare div for tooltips
+var div = d3.select("body").append("div")   
+    .attr("class", "tooltip")    
+    //.style("top", 100)
+    //.style("left", 100)        
+    .style("opacity", 40);
+
+div.append("span") // this should be a span not text which is for svg, i want html
+      .style("top", 100)
+      .text(function(){return "mouse over dots"});
+
+
+// var holder = d3.select("body").append("holder")
+//       .style("top", 100);
+      
+
+div.append("img")
+      .attr("src", "testWave.svg")
+      .attr("width", 300)
+      .attr("height", 300)
+      .style("top", 200);
+
+
+
+
+
+
+
+
+
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 1000 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
+
+var x = d3.scale.linear()
+    .range([0, width - 60]);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+// var color = d3.scale.category10();
+var color = d3.scale.ordinal()
+    .domain([0, 1, 2, 3, 4, 5, 6, 7])
+    .range(["#cce5ff","#99ccff","#66b2ff","#3399ff","#0080ff","#0066cc","#003366","#004c99"]);
+
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+// var waveform = d3.select("body").append("image")
+//       .attr("xlink:href", "leaf-green.png")
+//       .attr("x", 0)
+//       .attr("y", 0)
+//       .attr("width", 150)
+//       .attr("height", 200);
+
+d3.csv("testingcsv.csv", function(error, data){
+    data.forEach(function(d){
+        console.log(d);
+        console.log(d.lat, d.lon);
+    });
+
+    x.domain(d3.extent(data, function(d) { return d.lat; })).nice();
+    y.domain(d3.extent(data, function(d) { return d.lon; })).nice();
+
+
+    svg.selectAll(".dot")
+      .data(data)
+    .enter().append("circle")
+      .attr("class", "dot")
+      .attr("r", 6.5)
+      .attr("cx", function(d) { return x(d.lat); })
+      .attr("cy", function(d) { return y(d.lon); })
+      .style("fill", function(d) { return color(d.id); })
+      .style("stroke", "white")
+      .on("mouseover", function(d){ 
+          //div.html(d.lat + ", " + d.lon );
+          // 735E75 = 115, 94, 117
+          d3.select(this)
+            .style("stroke", "LightSlateGray")//"rgb(115,94,117)")
+            .attr("stroke-width", 3)
+            .attr("opacity", 50)
+            .attr("r", 8);
+
+          div.select("span").text(d.lat + ", " + d.lon)
+          div.select("img").attr("src", "waveforms/" + d.img)
+          console.log(d.img);
+        })
+      .on("mouseout", function(d){
+          d3.select(this)
+            .style("stroke", "white")
+            .attr("stroke-width", 1)
+            .attr("opacity", 100)
+            .attr("r", 6.5);
+        });
+
+
+      var legend = svg.selectAll(".legend")
+      .data(color.domain())
+      .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+      legend.append("rect")
+          .attr("x", width - 18)
+          .attr("width", 18)
+          .attr("height", 18)
+          .style("fill", color);
+
+      legend.append("text")
+          .attr("x", width - 24)
+          .attr("y", 9)
+          .attr("dy", ".35em")
+          .style("text-anchor", "end")
+          .text(function(d) { return d; });
+
+});
+
+
+</script>
