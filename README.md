@@ -62,4 +62,6 @@ ToDo: extract general data from each audio file and save in aggregate format. fu
 ToDo: improve resolution for printing and maybe trim resulting image to more artistic style
 
 
+####D3 Interactive Visualization
 
+Working on some experiments. ...
